@@ -26,7 +26,7 @@ DATA_PATH = CURRENT_DIR + "/../data/main-data/synthetic-resumes.csv"
 FAISS_PATH = CURRENT_DIR + "/../vectorstore"
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 # Define the path to the fine-tuned model
-FINE_TUNED_MODEL_PATH = CURRENT_DIR + "/../finetuning/fine_tuned_model"
+FINE_TUNED_MODEL_PATH = CURRENT_DIR + "/../finetunning/fine_tuned_model"
 # Load the fine-tuned model and tokenizer
 tokenizer = AutoTokenizer.from_pretrained(FINE_TUNED_MODEL_PATH)
 model = AutoModel.from_pretrained(FINE_TUNED_MODEL_PATH)
