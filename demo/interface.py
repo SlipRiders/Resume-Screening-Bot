@@ -36,8 +36,9 @@ welcome_message = """
 
   #### Getting started 🛠️
 
-  1. To set up, please add your OpenAI's API key. 🔑 
-  2. Type in a job description query. 💬
+  Currently, this program supports the following two types of queries 💬:
+  1. Enter the job description to find the most suitable resume
+  2. Enter a specific ID to find a specific resume
 
   Hint: The knowledge base of the LLM has been loaded with a pre-existing vectorstore of [resumes](https://github.com/SlipRiders/Resume-Screening-Bot/blob/main/data/main-data/synthetic-resumes.csv) to be used right away. 
   In addition, you may also find example job descriptions to test [here](https://github.com/SlipRiders/Resume-Screening-Bot/blob/main/data/supplementary-data/job_title_des.csv).
