@@ -179,6 +179,7 @@ for message in st.session_state.chat_history:
     with st.chat_message("AI"):
       message[0].render(*message[1:])
 
+api_key = st.session_state.api_key
 
 if not st.session_state.api_key:
   st.info("Please add your OpenAI API key to continue. Learn more about [API keys](https://platform.openai.com/api-keys).")
