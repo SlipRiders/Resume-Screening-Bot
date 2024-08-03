@@ -20,7 +20,7 @@ import time
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(CURRENT_DIR))
-
+openai_api_key = os.getenv("OPENAI_API_KEY", "")
 
 DATA_PATH = CURRENT_DIR + "/../data/main-data/synthetic-resumes.csv"
 FAISS_PATH = CURRENT_DIR + "/../vectorstore"
@@ -108,7 +108,7 @@ if "resume_list" not in st.session_state:
 def upload_file():
   modal = Modal(key="Demo Key", title="File Error", max_width=500)
   if st.session_state.uploaded_file != None:
-    try:  
+    try:
       df_load = pd.read_csv(st.session_state.uploaded_file)
     except Exception as error:
       with modal.container():
@@ -137,8 +137,8 @@ def check_openai_api_key(api_key: str):
     return False
   else:
     return True
-  
-  
+
+
 def check_model_name(model_name: str, api_key: str):
   openai.api_key = api_key
   model_list = [model.id for model in openai.models.list()]
@@ -156,7 +156,8 @@ user_query = st.chat_input("Type your message here...")
 with st.sidebar:
   st.markdown("# Control Panel")
 
-  st.text_input("OpenAI's API Key", type="password", key="api_key")
+  ##st.text_input("OpenAI's API Key", type="password", key="api_key")
+  st.text_input("OpenAI's API Key", value=openai_api_key, type="password", key="api_key")
   st.selectbox("RAG Mode", ["Generic RAG", "RAG Fusion"], placeholder="Generic RAG", key="rag_selection")
   st.text_input("GPT Model", "gpt-3.5-turbo", key="gpt_selection")
   st.file_uploader("Upload resumes", type=["csv"], key="uploaded_file", on_change=upload_file)
@@ -182,6 +183,8 @@ for message in st.session_state.chat_history:
 if not st.session_state.api_key:
   st.info("Please add your OpenAI API key to continue. Learn more about [API keys](https://platform.openai.com/api-keys).")
   st.stop()
+
+openai.api_key = api_key
 
 if not check_openai_api_key(st.session_state.api_key):
   st.error("The API key is incorrect. Please set a valid OpenAI API key to continue. Learn more about [API keys](https://platform.openai.com/api-keys).")
@@ -214,7 +217,7 @@ if user_query is not None and user_query != "":
     end = time.time()
 
     response = st.write_stream(stream_message)
-    
+
     retriever_message = chatbot_verbosity
     retriever_message.render(document_list, retriever.meta_data, end-start)
 
