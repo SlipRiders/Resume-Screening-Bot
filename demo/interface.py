@@ -24,12 +24,9 @@ sys.path.append(os.path.dirname(CURRENT_DIR))
 
 DATA_PATH = CURRENT_DIR + "/../data/main-data/synthetic-resumes.csv"
 FAISS_PATH = CURRENT_DIR + "/../vectorstore"
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+#EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 # Define the path to the fine-tuned model
-FINE_TUNED_MODEL_PATH = CURRENT_DIR + "/../finetunning/fine_tuned_model"
-# Load the fine-tuned model and tokenizer
-tokenizer = AutoTokenizer.from_pretrained(FINE_TUNED_MODEL_PATH)
-model = AutoModel.from_pretrained(FINE_TUNED_MODEL_PATH)
+EMBEDDING_MODEL = "cxyzxc/7375-l6v2-dev1"
 
 welcome_message = """
   #### Introduction 🚀
@@ -91,13 +88,7 @@ if "df" not in st.session_state:
   st.session_state.df = pd.read_csv(DATA_PATH)
 
 if "embedding_model" not in st.session_state:
-  #st.session_state.embedding_model = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, model_kwargs={"device": "cpu"})
-  model_kwargs = {
-    'device': 'cpu',  # 或 'cuda' 如果您想使用 GPU
-    'tokenizer': tokenizer,
-    'model': model
-  }
-  st.session_state.embedding_model = HuggingFaceEmbeddings(model_name=FINE_TUNED_MODEL_PATH,model_kwargs=model_kwargs)
+  st.session_state.embedding_model = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, model_kwargs={"device": "cpu"})
 
 if "rag_pipeline" not in st.session_state:
   vectordb = FAISS.load_local(FAISS_PATH, st.session_state.embedding_model, distance_strategy=DistanceStrategy.COSINE, allow_dangerous_deserialization=True)
