@@ -24,9 +24,9 @@ sys.path.append(os.path.dirname(CURRENT_DIR))
 
 DATA_PATH = CURRENT_DIR + "/../data/main-data/synthetic-resumes.csv"
 FAISS_PATH = CURRENT_DIR + "/../vectorstore"
+EMBEDDING_MODEL = "cxyzxc/7375-l6v2-dev1"
 #EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 # Define the path to the fine-tuned model
-EMBEDDING_MODEL = "cxyzxc/7375-l6v2-dev1"
 
 welcome_message = """
   #### Introduction 🚀
