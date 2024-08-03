@@ -5,7 +5,7 @@ import pandas as pd
 import streamlit as st
 import openai
 from streamlit_modal import Modal
-
+from transformers import AutoTokenizer, AutoModel
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_community.vectorstores import FAISS
 from langchain_community.vectorstores.faiss import DistanceStrategy
@@ -25,6 +25,11 @@ sys.path.append(os.path.dirname(CURRENT_DIR))
 DATA_PATH = CURRENT_DIR + "/../data/main-data/synthetic-resumes.csv"
 FAISS_PATH = CURRENT_DIR + "/../vectorstore"
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+# Define the path to the fine-tuned model
+FINE_TUNED_MODEL_PATH = "./finetuning/fine_tuned_model"
+# Load the fine-tuned model and tokenizer
+tokenizer = AutoTokenizer.from_pretrained(FINE_TUNED_MODEL_PATH)
+model = AutoModel.from_pretrained(FINE_TUNED_MODEL_PATH)
 
 welcome_message = """
   #### Introduction 🚀
@@ -86,8 +91,8 @@ if "df" not in st.session_state:
   st.session_state.df = pd.read_csv(DATA_PATH)
 
 if "embedding_model" not in st.session_state:
-  st.session_state.embedding_model = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, model_kwargs={"device": "cpu"})
-
+  #st.session_state.embedding_model = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, model_kwargs={"device": "cpu"})
+  st.session_state.embedding_model = HuggingFaceEmbeddings(model_kwargs={"model": model, "tokenizer": tokenizer})
 if "rag_pipeline" not in st.session_state:
   vectordb = FAISS.load_local(FAISS_PATH, st.session_state.embedding_model, distance_strategy=DistanceStrategy.COSINE, allow_dangerous_deserialization=True)
   st.session_state.rag_pipeline = SelfQueryRetriever(vectordb, st.session_state.df)
