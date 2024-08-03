@@ -9,7 +9,7 @@ from transformers import AutoTokenizer, AutoModel
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_community.vectorstores import FAISS
 from langchain_community.vectorstores.faiss import DistanceStrategy
-from langchain_huggingface.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 from llm_agent import ChatBot
 from ingest_data import ingest
