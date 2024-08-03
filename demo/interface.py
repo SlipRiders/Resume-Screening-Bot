@@ -27,8 +27,12 @@ FAISS_PATH = CURRENT_DIR + "/../vectorstore"
 EMBEDDING_MODEL = "cxyzxc/7375-l6v2-dev1"
 #EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 # Define the path to the fine-tuned model
-tokenizer = AutoTokenizer.from_pretrained(EMBEDDING_MODEL)
-model = AutoModel.from_pretrained(EMBEDDING_MODEL)
+try:
+  tokenizer = AutoTokenizer.from_pretrained(EMBEDDING_MODEL)
+  model = AutoModel.from_pretrained(EMBEDDING_MODEL)
+except OSError as e:
+  st.error(f"Error loading model: {e}")
+  st.stop()
 
 welcome_message = """
   #### Introduction 🚀
