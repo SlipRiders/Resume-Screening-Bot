@@ -9,7 +9,7 @@ from transformers import AutoTokenizer, AutoModel
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_community.vectorstores import FAISS
 from langchain_community.vectorstores.faiss import DistanceStrategy
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 
 from llm_agent import ChatBot
 from ingest_data import ingest
@@ -97,12 +97,7 @@ if "embedding_model" not in st.session_state:
     'tokenizer': tokenizer,
     'model': model
   }
-encode_kwargs = {'normalize_embeddings': True}
-st.session_state.embedding_model = HuggingFaceEmbeddings(
-    model_name=FINE_TUNED_MODEL_PATH,
-    model_kwargs=model_kwargs,
-    encode_kwargs=encode_kwargs
-  )
+  st.session_state.embedding_model = HuggingFaceEmbeddings(model_name=FINE_TUNED_MODEL_PATH,model_kwargs=model_kwargs)
 
 if "rag_pipeline" not in st.session_state:
   vectordb = FAISS.load_local(FAISS_PATH, st.session_state.embedding_model, distance_strategy=DistanceStrategy.COSINE, allow_dangerous_deserialization=True)
