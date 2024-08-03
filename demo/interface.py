@@ -92,7 +92,7 @@ if "df" not in st.session_state:
 
 if "embedding_model" not in st.session_state:
   #st.session_state.embedding_model = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, model_kwargs={"device": "cpu"})
-  st.session_state.embedding_model = HuggingFaceEmbeddings(model_kwargs={"model": model, "tokenizer": tokenizer})
+  st.session_state.embedding_model = HuggingFaceEmbeddings(model_name=FINE_TUNED_MODEL_PATH,model_kwargs={"model": model, "tokenizer": tokenizer})
 if "rag_pipeline" not in st.session_state:
   vectordb = FAISS.load_local(FAISS_PATH, st.session_state.embedding_model, distance_strategy=DistanceStrategy.COSINE, allow_dangerous_deserialization=True)
   st.session_state.rag_pipeline = SelfQueryRetriever(vectordb, st.session_state.df)
