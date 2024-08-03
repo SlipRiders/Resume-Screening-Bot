@@ -156,9 +156,6 @@ with st.sidebar:
   st.divider()
   st.markdown(info_message)
 
-  st.divider()
-  st.markdown(about_message)
-
 
 
 for message in st.session_state.chat_history:
