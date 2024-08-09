@@ -30,6 +30,7 @@ This guide will walk you through setting up the environment and installing the n
 Before you begin, ensure you have the following tools installed:
 - [Python 3.8 or higher](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installation/)
+- OpenAI API key
 
 ## 2. Create a Virtual Environment
 
@@ -59,24 +60,28 @@ It is recommended to create a virtual environment for the project to manage depe
 
 ## 3. Install Dependencies
 
+1. Clone the repository:
+    ```bash
+    git clone [https://github.com/SlipRiders/INFO7375-RAG-Assignment.git](https://github.com/SlipRiders/Resume-Screening-Bot.git)
+    cd Resume-Screening-Bot
+    ```
 Once the virtual environment is activated, install the project dependencies using the `requirements.txt` file.
 
-1. Ensure you are in the project directory.
-2. Run the following command to install the dependencies:
-
-    ```sh
+2. Install the required packages:
+    ```bash
     pip install -r requirements.txt
     ```
 
-## 4. Verify Installation
+3. Set up your API keys:
+    - Create a `.env` file in the project root directory.
+    - Add your OpenAI and Pinecone API keys to the `.env` file:
+      ```bash
+      OPENAI_API_KEY=your_openai_api_key
+      ```
 
-To verify that the installation was successful, you can check the installed packages and their versions:
-
-```sh
-pip list
-```
-## 5. Run the Project
+## 4. Run the Project
 With all dependencies installed, you can now run the project.
 ```sh
+cd demo
 streamlit run interface.py
 ```
