@@ -74,7 +74,7 @@ Once the virtual environment is activated, install the project dependencies usin
 
 3. Set up your API keys:
     - Create a `.env` file in the project root directory.
-    - Add your OpenAI and Pinecone API keys to the `.env` file:
+    - Add your OpenAI API keys to the `.env` file:
       ```bash
       OPENAI_API_KEY=your_openai_api_key
       ```
