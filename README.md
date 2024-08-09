@@ -20,3 +20,63 @@ Despite the increasingly large volume of applicants each year, there are limited
 RAG-like frameworks are great tools to enhance the reliability of chatbots. Overall, RAG aims to provide an external knowledge base for LLM agents, allowing them to receive additional context relevant to user queries. This increases the relevance and accuracy of the generated answers, which is especially important in data-intensive environments such as the recruitment domain.
 
 On the other hand, RAG Fusion is effective in addressing complex and ambiguous human-written prompts. While the LLM generator can handle this problem effectively, the retriever may struggle to find relevant documents when presented with multifaceted queries. Therefore, this technique can be used to improve resume retrieval quality when the system receives complex job descriptions (which are quite common in hiring).
+
+# Setup Instructions
+
+This guide will walk you through setting up the environment and installing the necessary dependencies to run the project.
+
+## 1. Prerequisites
+
+Before you begin, ensure you have the following tools installed:
+- [Python 3.8 or higher](https://www.python.org/downloads/)
+- [pip](https://pip.pypa.io/en/stable/installation/)
+
+## 2. Create a Virtual Environment
+
+It is recommended to create a virtual environment for the project to manage dependencies and avoid conflicts with other projects.
+
+1. Open a terminal or command prompt.
+2. Navigate to your project directory.
+3. Create a virtual environment:
+
+    ```sh
+    python -m venv venv
+    ```
+
+4. Activate the virtual environment:
+
+    - On Windows:
+
+        ```sh
+        venv\Scripts\activate
+        ```
+
+    - On macOS and Linux:
+
+        ```sh
+        source venv/bin/activate
+        ```
+
+## 3. Install Dependencies
+
+Once the virtual environment is activated, install the project dependencies using the `requirements.txt` file.
+
+1. Ensure you are in the project directory.
+2. Run the following command to install the dependencies:
+
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+## 4. Verify Installation
+
+To verify that the installation was successful, you can check the installed packages and their versions:
+
+```sh
+pip list
+```
+## 5. Run the Project
+With all dependencies installed, you can now run the project.
+```sh
+streamlit run interface.py
+```
