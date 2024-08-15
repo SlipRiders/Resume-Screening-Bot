@@ -1,4 +1,5 @@
 # Resume Screening RAG Bot
+Xiaoyang Chen 002683914 && Swini Rodrigues 002755764
 [Hugging face model](https://huggingface.co/cxyzxc/7375-l6v2-dev1)           
 [Streamlit Demo](https://info7374screenbot-bpkdynmhvwvdurqzeywcw8.streamlit.app/)           
 [Youtube Link](https://youtu.be/G8PyPWzC-LU)
