@@ -88,3 +88,28 @@ With all dependencies installed, you can now run the project.
 cd demo
 streamlit run interface.py
 ```
+
+
+
+## Contact Us
+
+If you have any questions or would like to collaborate, feel free to reach out to us:
+
+- **Swini Rodrigues**
+  - [GitHub](https://github.com/swini25)  <!-- Update with your actual GitHub URL -->
+  - [LinkedIn](https://www.linkedin.com/in/swinirodrigues/)  <!-- Update with your actual LinkedIn URL -->
+  - Email: rodrigues.sw@northeastern.edu  <!-- Update with your actual email address -->
+
+- **Xiaoyang Chen**
+  - [GitHub](https://github.com/SlipRiders)  <!-- Update with Xiaoyang's actual GitHub URL -->
+  - [LinkedIn](https://www.linkedin.com/in/xiaoyang-chen-a62625268/)  <!-- Update with Xiaoyang's actual LinkedIn URL -->
+  - Email: chen.xiaoyang@northeastern.edu  <!-- Update with Xiaoyang's actual email address -->
+ 
+
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+
+
